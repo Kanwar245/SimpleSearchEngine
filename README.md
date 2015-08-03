@@ -9,8 +9,7 @@ If Google used a program with a single process to query all of the indexes to fi
 
 ## Index Files
 You won't be writing any of the code that builds the indexes themselves. The program uses `read_list` to load an index from `index` and `filenames` into memory. Words and their frequencies are stored in an ordered linked list. The picture below shows what the linked list looks like.
-
-
+![alt-text] (https://github.com/Kanwar245/SimpleSearchEngine/blob/master/linkedlist.jpg)
 
 Each list node contains three elements: the word, an array that stores the number of times the word has been seen in each file, and a pointer to the next element of the list. Another data structure (an array of strings) stores the name of each file that is indexed. The index of a file name corresponds to the index of the freq array in a list node. Storing the file names separately means that we don't need to store the name of each file many times.
 

@@ -49,7 +49,7 @@ Here is a high-level overview of the algorithm `query`:
 
 ### Reading and writing the pipes:
 
-* The master process will be writing words to the child processes. How does the child process know when one word ends and the next word begins? The easiest way to solve this problem is to always write and read the same number of bytes. In other words, when the master process writes a word to a child, it should always write the same number of bytes. You can assume that a word is no bigger than 32 characters (see MAXWORD in freq_list.h). So the master process will write 32 bytes (including the null termination character), and the child process will always read 32 bytes.
+* The master process will be writing words to the child processes. How does the child process know when one word ends and the next word begins? The easiest way to solve this problem was to always write and read the same number of bytes. In other words, when the master process writes a word to a child, it will always write the same number of bytes. Assume that a word is no bigger than 32 characters (see MAXWORD in freq_list.h). So the master process will write 32 bytes (including the null termination character), and the child process will always read 32 bytes.
 * The FreqRecords have a fixed size, so the master process knows how to read one record at a time from a worker. The worker process notifies the master that it has no more records to send by sending a FreqRecord with a value of 0 for the freq field, and an empty string for the filename field.
-* The master process will read one record at a time from each worker, so you need to keep track of the case when the master has read all of the records from a worker.
+* The master process will read one record at a time from each worker, so the case when the master has read all of the records from a worker has to be tracked.
 
